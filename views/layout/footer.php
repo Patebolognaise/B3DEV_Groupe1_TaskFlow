@@ -14,8 +14,11 @@
         </style>
 </head>
 <body>
-        <footer>
-                <p>2026 - TP1 PHP POO </p>
-        </footer>
+    <main>
+
+    </main>
+    <footer class="footer">
+        <p>2026 - TaskFlow - Timo William Melain</p>
+    </footer>
 </body>
 </html>
