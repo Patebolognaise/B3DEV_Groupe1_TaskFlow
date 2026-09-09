@@ -63,39 +63,22 @@ class Task
         }
     }
 
-    public static function mockTasks(): array
-    {
-        return [
-            [
-                'id_tache' => 1,
-                'titre_tache' => 'Créer la maquette accueil',
-                'description' => 'Réaliser les blocs de présentation, les CTA et la section de contact.',
-                'date_de_creation' => '2026-09-02',
-                'priorite' => 'Haute',
-                'statut_tache' => 'En cours',
-                'deadline' => '2026-09-12',
-                'id_projet' => 1,
-            ],
-            [
-                'id_tache' => 2,
-                'titre_tache' => 'Mettre en place le menu',
-                'description' => 'Ajouter le menu de navigation et les liens de sections.',
-                'date_de_creation' => '2026-09-03',
-                'priorite' => 'Moyenne',
-                'statut_tache' => 'À faire',
-                'deadline' => '2026-09-15',
-                'id_projet' => 1,
-            ],
-            [
-                'id_tache' => 3,
-                'titre_tache' => 'Valider le formulaire de création',
-                'description' => 'Tester le formulaire côté serveur et le rendu visuel.',
-                'date_de_creation' => '2026-09-06',
-                'priorite' => 'Haute',
-                'statut_tache' => 'À faire',
-                'deadline' => '2026-09-20',
-                'id_projet' => 2,
-            ],
-        ];
+    public static function GetTaskById($id){
+        global $pdo;
+        $stmt = $pdo->prepare("SELECT * FROM Tache WHERE id_tache = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function UpdateTask($id, $titre, $description, $priorite, $statut, $deadline, $id_projet){
+        global $pdo;
+        $stmt = $pdo->prepare("UPDATE Tache SET titre_tache = :titre, description = :description, priorite = :priorite, statut_tache = :statut, deadline = :deadline, id_projet = :id_projet WHERE id_tache = :id");
+        $stmt->execute(['id' => $id, 'titre' => $titre, 'description' => $description, 'priorite' => $priorite, 'statut' => $statut, 'deadline' => $deadline, 'id_projet' => $id_projet]);
+    }
+
+    public static function DeleteTask($id){
+        global $pdo;
+        $stmt = $pdo->prepare("DELETE FROM Tache WHERE id_tache = :id");
+        $stmt->execute(['id' => $id]);
     }
 }
