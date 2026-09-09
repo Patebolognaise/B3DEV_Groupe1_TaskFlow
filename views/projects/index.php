@@ -36,6 +36,11 @@ $projects = $projects ?? [];
                 </div>
                 <div class="card-actions">
                     <a class="button secondary" href="?controller=project&action=show&id=<?= $projectId ?>">Voir</a>
+                    <a class="button ghost" href="?controller=project&action=edit&id=<?= $projectId ?>">Modifier</a>
+                    <form method="POST" action="?controller=project&action=delete" class="delete-project-form">
+                        <input type="hidden" name="id_projet" value="<?= $projectId ?>">
+                        <button type="submit" class="button danger">Supprimer</button>
+                    </form>
                     <a class="button ghost" href="?controller=task&action=create&id_projet=<?= $projectId ?>">Ajouter une tache</a>
                 </div>
             </article>

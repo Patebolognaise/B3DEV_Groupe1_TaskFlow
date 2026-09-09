@@ -65,6 +65,64 @@ class Project
         }
     }
 
+    public function delete(int $id): bool
+    {
+        try {
+            $this->pdo->beginTransaction();
+
+            $assignmentStmt = $this->pdo->prepare('DELETE FROM Attribuer WHERE id_projet = :id');
+            $assignmentStmt->execute(['id' => $id]);
+
+            $taskStmt = $this->pdo->prepare('DELETE FROM Tache WHERE id_projet = :id');
+            $taskStmt->execute(['id' => $id]);
+
+            $projectStmt = $this->pdo->prepare('DELETE FROM Projet WHERE id_projet = :id');
+            $success = $projectStmt->execute(['id' => $id]);
+
+            if ($success) {
+                $this->pdo->commit();
+                return true;
+            }
+
+            $this->pdo->rollBack();
+            return false;
+        } catch (PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+
+            return false;
+        }
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $titre = trim((string) ($data['titre_projet'] ?? ''));
+        $description = trim((string) ($data['description'] ?? ''));
+        $statut = trim((string) ($data['statut_projet'] ?? 'En cours'));
+        $date = trim((string) ($data['date_'] ?? date('Y-m-d')));
+
+        if ($id <= 0 || $titre === '') {
+            return false;
+        }
+
+        try {
+            $stmt = $this->pdo->prepare(
+                'UPDATE Projet SET titre_projet = :titre, description = :description, date_ = :date_, statut_projet = :statut WHERE id_projet = :id'
+            );
+
+            return $stmt->execute([
+                'id' => $id,
+                'titre' => $titre,
+                'description' => $description,
+                'date_' => $date,
+                'statut' => $statut,
+            ]);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public static function mockProjects(): array
     {
         return [

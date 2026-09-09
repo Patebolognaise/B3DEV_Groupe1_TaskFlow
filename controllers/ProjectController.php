@@ -32,6 +32,40 @@ switch ($action) {
         include __DIR__ . '/../views/projects/show.php';
         break;
 
+    case 'edit':
+        $projectId = (int) ($_POST['id_projet'] ?? $_GET['id'] ?? 0);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $success = $projectModel->update($projectId, $_POST);
+
+            if ($success) {
+                header('Location: ?controller=project&action=index');
+                exit;
+            }
+
+            $errorMessage = 'Le projet n’a pas pu être modifié.';
+        }
+
+        $project = $projectId > 0 ? $projectModel->findById($projectId) : null;
+
+        if (!$project) {
+            header('Location: ?controller=project&action=index');
+            exit;
+        }
+
+        include __DIR__ . '/../views/projects/edit.php';
+        break;
+
+    case 'delete':
+        $projectId = (int) ($_POST['id_projet'] ?? $_GET['id'] ?? 0);
+
+        if ($projectId > 0) {
+            $projectModel->delete($projectId);
+        }
+
+        header('Location: ?controller=project&action=index');
+        exit;
+
     case 'index':
     default:
         $projects = $projectModel->getAll();
