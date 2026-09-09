@@ -19,6 +19,26 @@ class User{
         header("Location: index.php");        
 
     }
+
+    public static function GetUserById($id){
+        global $pdo;
+        $stmt = $pdo->prepare("SELECT * FROM Users WHERE id_user = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function UpdateUser($id, $nom, $prenom, $email, $motdepasse, $telephone){
+        global $pdo;
+        $stmt = $pdo->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, email = :email, password = :motdepasse, tel = :telephone WHERE id_user = :id");
+        $stmt->execute(['id' => $id, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'motdepasse' => $motdepasse, 'telephone' => $telephone]);
+      
+    } 
+    
+    public static function DeleteUser($id){
+        global $pdo;
+        $stmt = $pdo->prepare("DELETE FROM Users WHERE id_user = :id");
+        $stmt->execute(['id' => $id]);
+    }
     
 
    
