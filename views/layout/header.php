@@ -14,8 +14,6 @@
                 <li><a href="?controller=accueil&action=show">Accueil</a></li>
                 <li><a href="?controller=project&action=index">Projets</a></li>
                 <li><a href="?controller=task&action=index">Tâches</a></li>
-                <li><a href="?controller=project&action=create">Nouveau projet</a></li>
-                <li><a href="?controller=task&action=create">Nouvelle tâche</a></li>
               <li><a href="?controller=user&action=show">Gestion des utlisateurs</a></li>
             </ul>
         </nav>

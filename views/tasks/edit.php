@@ -16,11 +16,19 @@
         </div>
         <div class="field">
             <label for="priorite">Priorité</label>
-            <input type="text" id="priorite" name="priorite" value="<?= htmlspecialchars($task['priorite'] ?? '') ?>">
+           <select name="priorite" id="priorite">
+                <option value="haute">Haute</option>
+                <option value="moyenne">Moyenne</option>
+                <option value="basse">Basse</option>
+           </select>
         </div>
         <div class="field">
             <label for="statut_tache">Statut</label>
-            <input type="text" id="statut_tache" name="statut_tache" value="<?= htmlspecialchars($task['statut_tache'] ?? '') ?>">
+           <select name="statut_tache" id="statut_tache">
+                <option value="à faire">À faire</option>
+                <option value="en cours">En cours</option>
+                <option value="terminée">Terminée</option>
+           </select>
         </div>
         <div class="field">
             <label for="deadline">Échéance</label>

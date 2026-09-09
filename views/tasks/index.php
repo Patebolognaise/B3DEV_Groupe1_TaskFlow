@@ -1,11 +1,12 @@
 <?php
 $tasks = $tasks ?? [];
+$taskCount = count($tasks);
 ?>
 
 <section class="page-header">
     <div>
         <p class="eyebrow">Gestion</p>
-        <h1>Tâches</h1>
+        <h1>Tâches <span id="task-counter" class="counter-badge"><?= $taskCount ?> tâche<?= $taskCount > 1 ? 's' : '' ?></span></h1>
     </div>
     <a class="button primary" href="?controller=task&action=create">Nouvelle tâche</a>
 </section>

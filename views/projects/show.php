@@ -40,7 +40,8 @@ $tasks = $tasks ?? [];
         </article>
 
         <article class="card">
-            <h2>Tâches associées</h2>
+            <?php $taskCount = count($tasks); ?>
+            <h2>Tâches associées <span id="project-task-counter" class="counter-badge"><?= $taskCount ?> tâche<?= $taskCount > 1 ? 's' : '' ?></span></h2>
             <?php if (empty($tasks)): ?>
                 <p>Aucune tâche pour ce projet pour le moment.</p>
             <?php else: ?>

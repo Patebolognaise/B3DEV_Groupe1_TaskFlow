@@ -27,10 +27,10 @@ class User{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function UpdateUser($id, $nom, $prenom, $email, $motdepasse, $telephone){
+    public static function UpdateUser($id, $nom, $prenom, $email, $telephone){
         global $pdo;
-        $stmt = $pdo->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, email = :email, password = :motdepasse, tel = :telephone WHERE id_user = :id");
-        $stmt->execute(['id' => $id, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'motdepasse' => $motdepasse, 'telephone' => $telephone]);
+        $stmt = $pdo->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, email = :email, tel = :telephone WHERE id_user = :id");
+        $stmt->execute(['id' => $id, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'telephone' => $telephone]);
       
     } 
     

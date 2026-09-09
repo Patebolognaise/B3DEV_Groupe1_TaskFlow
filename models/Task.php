@@ -81,4 +81,11 @@ class Task
         $stmt = $pdo->prepare("DELETE FROM Tache WHERE id_tache = :id");
         $stmt->execute(['id' => $id]);
     }
+
+    public static function GetAllTasks(){
+        global $pdo;
+        $stmt = $pdo->query("SELECT * FROM Tache");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }

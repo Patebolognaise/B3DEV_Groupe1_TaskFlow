@@ -395,3 +395,16 @@ th {
         overflow-x: auto;
     }
 }
+
+.counter-badge {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #1e40af;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+

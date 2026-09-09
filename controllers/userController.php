@@ -16,7 +16,7 @@ switch($action){
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $motdepasse = $_POST['motdepasse'];
+        $motdepasse = password_hash($_POST['motdepasse'], PASSWORD_DEFAULT);
         $telephone = $_POST['telephone'];
         User::AddUser($nom, $prenom, $email, $motdepasse, $telephone);
 
@@ -35,9 +35,9 @@ switch($action){
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $motdepasse = $_POST['motdepasse'];
+      
         $telephone = $_POST['telephone'];
-        User::UpdateUser($id, $nom, $prenom, $email, $motdepasse, $telephone);
+        User::UpdateUser($id, $nom, $prenom, $email, $telephone);
         $data["user"] = User::GetAllUsers();
 
         header("Location: ?controller=user&action=show");

@@ -14,7 +14,7 @@ switch ($action) {
             $success = $taskModel->create($_POST);
 
             if ($success) {
-                header('Location: ?controller=Projet&action=index');
+                header('Location: ?controller=task&action=index');
                 exit;
             }
 
@@ -25,8 +25,11 @@ switch ($action) {
         include __DIR__ . '/../views/tasks/create.php';
         break;
 
-    case 'index':
-
+    case 'show':
+        $id = $_GET['id'];
+        $tasks = Task::GetAllTasks();
+        include __DIR__ . '/../views/tasks/show.php';
+        break;
     case 'edit':
         $id = $_GET['id'];
         $task = Task::GetTaskById($id);
@@ -42,13 +45,13 @@ switch ($action) {
             $deadline = filter_input(INPUT_POST, 'deadline', FILTER_SANITIZE_STRING);
             $id_projet = $_POST['id_projet'];
             Task::UpdateTask($id, $titre, $description, $priorite, $statut, $deadline, $id_projet);
-            header('Location: ?controller=Projet&action=index');
+            header('Location: ?controller=task&action=index');
             exit;
             break;
         case 'delete':
             $id = $_GET['id'];
             Task::DeleteTask($id);
-            header('Location: ?controller=Projet&action=index');
+            header('Location: ?controller=task&action=index');
             exit;
             break;
     default:
