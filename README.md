@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## TaskFlow (Gestion collaborative de tâche)
 ## Membre 
  -Timo William Melain 
@@ -41,6 +42,17 @@
  # Structure du projet 
 
 ```text
+=======
+TASKFLOW
+
+développer par Timo, William et Melain
+
+technologies utilisées:
+
+
+
+```
+>>>>>>> be7e45156f3adad524b9344b1753b965036fc442
 B3DEV_Groupe1_TaskFlow/
 ├── config/
 │   └── database.php         # Configuration et connexion PDO à la BDD
@@ -61,6 +73,7 @@ B3DEV_Groupe1_TaskFlow/
 │   └── js/
 │       └── app.js           # Scripts JavaScript (modal, compteurs...)
 ├── views/
+<<<<<<< HEAD
 │   ├── layout/              # Header et Footer communs
 │   ├── projects/            # Vues des projets (index, create, edit, show)
 │   ├── tasks/               # Vues des tâches (index, create, edit)
@@ -82,3 +95,13 @@ wILLIAM
  Gestion du Front-end et le readme
  Gestion CRUD Utilisateur
 
+=======
+│   ├── accueil.php
+│   ├── user.php
+│   ├── layout/
+│   ├── projects/
+│   └── tasks/
+├── index.php
+├── README.md
+```
+>>>>>>> be7e45156f3adad524b9344b1753b965036fc442
