@@ -1,14 +1,32 @@
 <?php
-include 'config/database.php';
+include __DIR__ . '/config/database.php';
 
-$controller = $_GET['controller'] ?? 'accueil';
+$controller = strtolower($_GET['controller'] ?? 'accueil');
 $action = $_GET['action'] ?? 'show';
 
-include 'views/layout/header.php';
+$controllerFile = null;
+$controllerCandidates = [
+    $controller . 'Controller.php',
+    ucfirst($controller) . 'Controller.php'
+];
 
-require_once "controllers/" . $controller . "Controller.php";
+foreach ($controllerCandidates as $candidate) {
+    $path = __DIR__ . '/controllers/' . $candidate;
+    if (file_exists($path)) {
+        $controllerFile = $path;
+        break;
+    }
+}
 
-include 'views/layout/footer.php';
+include __DIR__ . '/views/layout/header.php';
+
+if ($controllerFile) {
+    require_once $controllerFile;
+} else {
+    include __DIR__ . '/views/accueil.php';
+}
+
+include __DIR__ . '/views/layout/footer.php';
 
 
 
