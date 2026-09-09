@@ -12,6 +12,7 @@
                 <li><a href="?controller=accueil&action=show">Accueil</a></li>
                 <li><a href="#">Projets</a></li>
                 <li><a href="#">Tâches</a></li>
+                <li><a href="?controller=user&action=show">Gestion des utlisateurs</a></li>
             </ul>
         </nav>
     </header>
