@@ -55,8 +55,10 @@ $tasks = $tasks ?? [];
                             <?php if (!empty($task['deadline'])): ?>
                                 <span class="deadline">Échéance : <?= htmlspecialchars($task['deadline']) ?></span>
                             <?php endif; ?>
-                            <a href="?controller=task&action=edit&id=<?= $task['id_tache'] ?>">Modifier</a>
-                            <a href="?controller=task&action=delete&id=<?= $task['id_tache'] ?>">Supprimer</a>
+                            <div class="card-actions">
+                                <a class="button ghost" href="?controller=task&action=edit&id=<?= $task['id_tache'] ?>">Modifier</a>
+                                <a class="button danger" href="?controller=task&action=delete&id=<?= $task['id_tache'] ?>">Supprimer</a>
+                            </div>
                         </li>
                     <?php endforeach; ?>
                 </ul>

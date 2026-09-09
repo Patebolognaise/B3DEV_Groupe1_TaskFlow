@@ -18,7 +18,7 @@ $tasks = $tasks ?? [];
     </div>
 <?php else: ?>
     <div class="list-table card">
-        <table border=1>
+        <table>
             <thead>
                 <tr>
                     <th>Titre</th>
