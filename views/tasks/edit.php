@@ -1,49 +1,29 @@
-<section class="page-header">
-    <div>
-        <p class="eyebrow">Modification</p>
-        <h1>Modifier la tâche</h1>
-    </div>
-    <a class="button ghost" href="?controller=task&action=index">Retour</a>
-</section>
-
-<div class="form-card card">
-    <form method="POST" action="?controller=task&action=index" class="form-grid">
-        <div class="field">
-            <label for="titre_tache">Titre</label>
-            <input type="text" id="titre_tache" name="titre_tache" value="Créer la maquette accueil">
-        </div>
-
-        <div class="field">
-            <label for="priorite">Priorité</label>
-            <select id="priorite" name="priorite">
-                <option value="Haute" selected>Haute</option>
-                <option value="Moyenne">Moyenne</option>
-                <option value="Basse">Basse</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label for="statut_tache">Statut</label>
-            <select id="statut_tache" name="statut_tache">
-                <option value="À faire">À faire</option>
-                <option value="En cours" selected>En cours</option>
-                <option value="Terminé">Terminé</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label for="deadline">Échéance</label>
-            <input type="date" id="deadline" name="deadline" value="2026-09-12">
-        </div>
-
-        <div class="field full-width">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" rows="5">Réaliser les blocs de présentation, les CTA et la section de contact.</textarea>
-        </div>
-
-        <div class="form-actions full-width">
-            <button type="submit" class="button primary">Enregistrer</button>
-            <a class="button ghost" href="?controller=task&action=index">Annuler</a>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier la tâche</title>
+</head>
+<body>
+    <h1>Modifier la tâche</h1>
+    <form action="?controller=task&action=update" method="POST">
+        <label for="titre_tache">Titre</label>
+        <input type="hidden" name="id_tache" value="<?= $task['id_tache'] ?>">
+        <input type="text" id="titre_tache" name="titre_tache" value="<?= $task['titre_tache'] ?>">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" value="<?= $task['description'] ?>">
+        <label for="priorite">Priorité</label>
+        <input type="text" id="priorite" name="priorite" value="<?= $task['priorite'] ?>">
+        <label for="statut_tache">Statut</label>
+        <input type="text" id="statut_tache" name="statut_tache" value="<?= $task['statut_tache'] ?>">
+        <label for="deadline">Échéance</label>
+        <input type="date" id="deadline" name="deadline" value="<?= $task['deadline'] ?>">
+        <label for="id_projet">Projet</label>
+        <input type="text" id="id_projet" name="id_projet" value="<?= $task['id_projet'] ?>">
+        <button type="submit">Modifier</button>
+        <button type="button" onclick="window.location.href='?controller=task&action=index'">Annuler</button>
     </form>
-</div>
+    
+</body>
+</html>

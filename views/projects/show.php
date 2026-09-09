@@ -49,11 +49,14 @@ $tasks = $tasks ?? [];
                         <li>
                             <div>
                                 <strong><?= htmlspecialchars($task['titre_tache'] ?? 'Tâche sans titre') ?></strong>
+                                <p><?= htmlspecialchars($task['description'] ?? 'Aucune description.') ?></p>
                                 <small><?= htmlspecialchars($task['statut_tache'] ?? 'Non défini') ?> • <?= htmlspecialchars($task['priorite'] ?? 'Moyenne') ?></small>
                             </div>
                             <?php if (!empty($task['deadline'])): ?>
                                 <span class="deadline">Échéance : <?= htmlspecialchars($task['deadline']) ?></span>
                             <?php endif; ?>
+                            <a href="?controller=task&action=edit&id=<?= $task['id_tache'] ?>">Modifier</a>
+                            <a href="?controller=task&action=delete&id=<?= $task['id_tache'] ?>">Supprimer</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
